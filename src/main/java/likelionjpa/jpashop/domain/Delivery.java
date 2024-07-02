@@ -1,7 +1,6 @@
 package likelionjpa.jpashop.domain;
 
 import jakarta.persistence.*;
-import likelionjpa.jpashop.domain.item.DeliveryStatus;
 import lombok.Getter;
 import lombok.Setter;
 

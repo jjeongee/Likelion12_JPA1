@@ -1,4 +1,4 @@
-package likelionjpa.jpashop.domain.item;
+package likelionjpa.jpashop.domain;
 
 public enum DeliveryStatus {
     READY, COMPLETE
