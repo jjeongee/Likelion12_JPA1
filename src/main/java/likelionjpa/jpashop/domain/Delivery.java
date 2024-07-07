@@ -13,7 +13,7 @@ public class Delivery {
     @Column(name="delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery")//delivery랑 일대일 관계
+    @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY)//delivery랑 일대일 관계
     private Order order;
 
     @Embedded

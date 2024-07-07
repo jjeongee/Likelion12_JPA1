@@ -19,14 +19,15 @@ public class Order {
     @Column(name="order_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    //DB에 OrderItems 항목 한개를 저장하게 되면 자동으로 중앙 DB에 order 관련된 세개의 항목이 저장됨
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="delivery_id")
     private Delivery delivery;
 
@@ -34,4 +35,20 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status; //ORDER, CANCEL로 상태 표시
+
+    //연관관계 편의 메서드 - 양방향 매핑관계의 간결화된 정의
+    public void setMember(Member member){
+        this.member=member;
+        member.getOrders().add(this);
+    }
+
+    public void addOrderItem(OrderItem orderItem){
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery){
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
 }
