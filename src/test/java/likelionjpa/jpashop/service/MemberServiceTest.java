@@ -7,6 +7,7 @@ import likelionjpa.jpashop.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -22,20 +23,19 @@ class MemberServiceTest {
     @Test
     public void signUp() throws Exception{
         Member member = new Member();
-        member.setName("Likelion2");
+        member.setName("new hj");
 
         Long savedId = memberService.join(member);
 
-        em.flush();
         assertEquals(member,memberRepository.findOne(savedId));
     }
     @Test
     public void DuplicateMemberException() throws Exception{
         Member member1 = new Member();
-        member1.setName("jjeongee3");
+        member1.setName("new hj");
 
         Member member2 = new Member();
-        member2.setName("jjeongee3");
+        member2.setName("new hj");
 
         memberService.join(member1);
         try{
