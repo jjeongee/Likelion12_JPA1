@@ -16,6 +16,7 @@ import java.util.List;
 //클래스 상속을 나타낼때 따라오는 어노테이션
 @DiscriminatorColumn(name="dtype")
 @Getter
+@Setter
 public abstract class Item {
     @Id
     @GeneratedValue

@@ -5,7 +5,6 @@ import likelionjpa.jpashop.domain.item.Item;
 import likelionjpa.jpashop.repository.ItemRepository;
 import likelionjpa.jpashop.repository.MemberRepository;
 import likelionjpa.jpashop.repository.OrderRepository;
-import likelionjpa.jpashop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
